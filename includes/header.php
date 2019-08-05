@@ -8,7 +8,7 @@
                 </button>
                 <a class="navbar-brand">
 
-                    <img src="assets/img/logoknjiznica.png" />
+                    <img src="assets/img/logoknjiznica.png" /> 
                 </a>
 
             </div>
