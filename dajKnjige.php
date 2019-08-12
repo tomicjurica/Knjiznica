@@ -14,7 +14,7 @@ if($query -> rowCount() > 0)
   foreach ($results as $result) {?>
   
 <option value="<?php echo htmlentities($result->ID_Knjige);?>"><?php echo htmlentities($result->Naziv);?></option>
-<b>Book Name :</b> 
+<b>Naziv knjige :</b> 
 <?php  
 echo htmlentities($result->Naziv);
  echo "<script>$('#submit').prop('disabled',false);</script>";
@@ -22,7 +22,7 @@ echo htmlentities($result->Naziv);
 }
  else{?>
   
-<option class="others"> Invalid ISBN Number</option>
+<option class="others"> Pogrešan ID</option>
 <?php
  echo "<script>$('#submit').prop('disabled',true);</script>";
 }

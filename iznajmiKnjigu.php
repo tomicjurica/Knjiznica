@@ -21,12 +21,12 @@ $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-$_SESSION['msg']="Book issued successfully ";
+$_SESSION['msg']="Uspješno ";
 header('location:iznajmljeneKnjige.php');
 }
 else 
 {
-$_SESSION['error']="Something went wrong. Please try again $ID_Korisnik,$ID_Knjige ";
+$_SESSION['error']="Greška ";
 header('location:iznajmljeneKnjige.php');
 }
 

@@ -17,7 +17,7 @@ $query = $dbh->prepare($sql);
 $query->bindParam(':izdavac',$izdavac,PDO::PARAM_STR);
 $query->bindParam(':athrid',$athrid,PDO::PARAM_STR);
 $query->execute();
-$_SESSION['updatemsg']="izdavac info updated successfully";
+$_SESSION['updatemsg']="Uspješno";
 header('location:izdavaci.php');
 
 

@@ -24,7 +24,7 @@ if($query->rowCount() > 0)
     }
 }
 } else{
-    echo "<script>alert('Invalid Details');</script>";
+    echo "<script>alert('Pogrešni korisnički podaci');</script>";
 }
 }
 ?>

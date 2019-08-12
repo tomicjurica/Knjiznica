@@ -32,7 +32,7 @@ header('location:iznajmljeneKnjige.php');
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Kknjižnica| Detalji</title>
+    <title>Knjižnica| Detalji</title>
     <!-- BOOTSTRAP CORE STYLE  -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME STYLE  -->
@@ -124,6 +124,9 @@ foreach($results as $result)
 <div class="form-group">
 <label>Clan :</label>
 <?php echo htmlentities($result->Ime);?>
+<?php echo htmlentities(" ");?>
+<?php echo htmlentities($result->Prezime);?>
+
 </div>
 
 <div class="form-group">

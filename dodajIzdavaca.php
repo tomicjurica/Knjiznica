@@ -18,12 +18,12 @@ $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-$_SESSION['msg']="izdavac Listed successfully";
+$_SESSION['msg']="Uspješno";
 header('location:izdavaci.php');
 }
 else 
 {
-$_SESSION['error']="Something went wrong. Please try again";
+$_SESSION['error']="Greška";
 header('location:izdavaci.php');
 }
 

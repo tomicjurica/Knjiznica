@@ -27,12 +27,12 @@ $query->execute();
 $lastInsertId = $dbh->lastInsertId();
 if($lastInsertId)
 {
-$_SESSION['msg']="Book Listed successfully";
+$_SESSION['msg']="Uspješno";
 header('location:knjige.php');
 }
 else 
 {
-$_SESSION['error']="Something went wrong. Please try again";
+$_SESSION['error']="Greška";
 header('location:knjige.php');
 }
 

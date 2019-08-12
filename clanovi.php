@@ -15,7 +15,7 @@ else{
     $query = $dbh->prepare($sql);
     $query -> bindParam(':id',$id, PDO::PARAM_STR);
     $query -> execute();
-    $_SESSION['delmsg']="Category deleted scuccessfully ";
+    $_SESSION['delmsg']=" ";
     header('location:clanovi.php');
     
     }

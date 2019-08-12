@@ -35,7 +35,7 @@ $query->bindParam(':tip',$tip,PDO::PARAM_STR);
 
 
 $query->execute();
-$_SESSION['updatemsg']="Uspjesno,$ID_Korisnik,$ime,$email,$lozinka,$adresa,$brtel,$tip ";
+$_SESSION['updatemsg']="Uspjesno";
 header('location:clanovi.php');
 
 
