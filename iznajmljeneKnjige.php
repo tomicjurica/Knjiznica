@@ -93,7 +93,8 @@ else{
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th> Član  </th>
+                                            <th> Ime  </th>
+                                            <th> Prezime  </th>
                                             <th> Naziv knjige</th>
                                             <th> Datum izdavanja</th>
                                             <th> Datum povratka</th>
@@ -113,6 +114,7 @@ foreach($results as $result)
                                         <tr class="odd gradeX">
                                             <td class="center"><?php echo htmlentities($cnt);?></td>
                                             <td class="center"><?php echo htmlentities($result->Ime);?></td>
+                                            <td class="center"><?php echo htmlentities($result->Prezime);?></td>
                                             <td class="center"><?php echo htmlentities($result->Naziv);?></td>
                                             <td class="center"><?php echo htmlentities($result->Datum_Iznajmljivanja);?></td>
                                             <td class="center"><?php if($result->Status_Iznajmljivanja==1)

@@ -113,7 +113,7 @@ Iznajmi knjigu
 <form role="form" method="post">
 
 <div class="form-group">
-<label>Student id<span style="color:red;">*</span></label>
+<label>ID Člana<span style="color:red;">*</span></label>
 <input class="form-control" type="text" name="ID_Korisnik" id="ID_Korisnik" onBlur="dajClanove()" autocomplete="off"  required="required" />
 </div>
 
@@ -121,12 +121,8 @@ Iznajmi knjigu
 <span id="get_student_name" style="font-size:16px;"></span> 
 </div>
 
-
-
-
-
 <div class="form-group">
-<label>Naslov knjige<span style="color:red;">*</span></label>
+<label>ID knjige<span style="color:red;">*</span></label>
 <input class="form-control" type="text" name="ID_Knjige" id="ID_Knjige" onBlur="dajKnjige()"  required="required" />
 </div>
 

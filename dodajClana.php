@@ -71,7 +71,7 @@ header('location:clanovi.php');
          <div class="container">
         <div class="row pad-botm">
             <div class="col-md-12">
-                <h4 class="header-line">Dodaj knjigu</h4>
+                <h4 class="header-line">Dodaj člana</h4>
                 
                             </div>
 
