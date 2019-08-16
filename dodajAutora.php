@@ -23,7 +23,7 @@ header('location:autori.php');
 }
 else 
 {
-$_SESSION['error']="Something went wrong. Please try again";
+$_SESSION['error']="Greška";
 header('location:autori.php');
 }
 

@@ -14,7 +14,7 @@ $sql = "delete from izdavaci  WHERE ID_Izdavac=:id";
 $query = $dbh->prepare($sql);
 $query -> bindParam(':id',$id, PDO::PARAM_STR);
 $query -> execute();
-$_SESSION['delmsg']="Autor obrisan";
+$_SESSION['delmsg']="Izdavac obrisan";
 header('location:izdavaci.php');
 
 }
