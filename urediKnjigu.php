@@ -77,7 +77,7 @@ Book Info
 <form role="form" method="post">
 <?php 
 $ID_Knjige=intval($_GET['ID_Knjige']);
-$sql = "SELECT knjige.Naziv, knjige.Godina_Izdavanja, knjige.Status, knjige.Br_Stranica, autori.Naziv_Autora, izdavaci.Naziv as nzv from knjige inner join autori on knjige.Autor_ID = autori.ID_Autor inner join izdavaci on knjige.Izdavac_ID=izdavaci.ID_Izdavac where knjige.ID_Knjige=:ID_Knjige";
+$sql = "SELECT autori.ID_Autor,izdavaci.ID_Izdavac, knjige.Naziv, knjige.Godina_Izdavanja, knjige.Status, knjige.Br_Stranica, autori.Naziv_Autora, izdavaci.Naziv as nzv from knjige inner join autori on knjige.Autor_ID = autori.ID_Autor inner join izdavaci on knjige.Izdavac_ID=izdavaci.ID_Izdavac where knjige.ID_Knjige=:ID_Knjige";
 $query = $dbh -> prepare($sql);
 $query->bindParam(':ID_Knjige',$ID_Knjige,PDO::PARAM_STR);
 $query->execute();
@@ -90,66 +90,23 @@ foreach($results as $result)
 
 
 <div class="form-group">
-<label>Book Name<span style="color:red;">*</span></label>
+<label>Naziv Knjige<span style="color:red;">*</span></label>
 <input class="form-control" type="text" name="naziv" value="<?php echo htmlentities($result->Naziv);?>" required />
 </div>
 
 
 
 
-
 <div class="form-group">
-<label> Izdavaci<span style="color:red;">*</span></label>
-<select class="form-control" name="izdavac" >
-<option value="<?php echo htmlentities($result->ID_Izdavac);?>"> <?php echo htmlentities($catname=$result->nzv);?></option>
-<?php 
-$status=1;
-$sql1 = "SELECT * from  izdavaci ";
-$query1 = $dbh -> prepare($sql1);
-$query1->execute();
-$resultss=$query1->fetchAll(PDO::FETCH_OBJ);
-if($query1->rowCount() > 0)
-{
-foreach($resultss as $row)
-{           
-if($catname==$row->Naziv)
-{
-continue;
-}
-else
-{
-    ?>  
-<option value="<?php echo htmlentities($row->ID_Izdavac);?>" selected="selected"><?php echo htmlentities($row->Naziv);?></option>
- <?php }}} ?> 
-</select>
+<label>Autor <span style="color:red;">*</span></label>
+<input class="form-control" type="text" name="author" value="<?php echo htmlentities($result->ID_Autor);?>"  required="required" />
 </div>
 
-
 <div class="form-group">
-<label> Autor<span style="color:red;">*</span></label>
-<select class="form-control" name="author">
-<option value="<?php echo htmlentities($result->ID_Autor);?>" > <?php echo htmlentities($athrname=$result->Naziv_Autora);?></option>
-<?php 
-
-$sql2 = "SELECT * from  autori ";
-$query2 = $dbh -> prepare($sql2);
-$query2->execute();
-$result2=$query2->fetchAll(PDO::FETCH_OBJ);
-if($query2->rowCount() > 0)
-{
-foreach($result2 as $ret)
-{           
-if($athrname==$ret->Naziv_Autora)
-{
-continue;
-} else{
-
-    ?>  
-<option value="<?php echo htmlentities($ret->ID_Autor);?>"  selected="selected"><?php echo htmlentities($ret->Naziv_Autora);?></option>
-
- <?php }}} ?> 
-</select>
+<label>Izdavac<span style="color:red;">*</span></label>
+<input class="form-control" type="text" name="izdavac" value="<?php echo htmlentities($result->ID_Izdavac);?>"  required="required" />
 </div>
+
 
 <div class="form-group">
 <label>Godina Izdavanja<span style="color:red;">*</span></label>

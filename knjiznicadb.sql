@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 05, 2019 at 07:43 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Host: localhost:3306
+-- Generation Time: Aug 16, 2019 at 05:19 PM
+-- Server version: 10.3.16-MariaDB
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `knjiznicadb`
+-- Database: `id10403650_knjiznicadb`
 --
 
 -- --------------------------------------------------------
@@ -40,9 +40,8 @@ CREATE TABLE `autori` (
 INSERT INTO `autori` (`ID_Autor`, `Naziv_Autora`) VALUES
 (1, 'Ivo Andrić'),
 (2, 'Karl May'),
-(3, 'Antoine de Saint-Exupéry'),
-(5, 'Homer '),
-(6, 'ivo');
+(3, 'Homer '),
+(4, 'Branko Ćopić');
 
 -- --------------------------------------------------------
 
@@ -61,11 +60,9 @@ CREATE TABLE `izdavaci` (
 
 INSERT INTO `izdavaci` (`ID_Izdavac`, `Naziv`) VALUES
 (1, 'Nova Knjiga'),
-(2, 'Delfi'),
-(3, 'Školska naklada'),
-(5, 'hdsgafjhsagfjhsadgfjdsa'),
-(6, 'Svijetlost'),
-(7, 'delfi');
+(2, 'Školska naklada'),
+(3, 'Svijetlost'),
+(4, 'Ziral');
 
 -- --------------------------------------------------------
 
@@ -79,7 +76,7 @@ CREATE TABLE `iznajmljivanje` (
   `Datum_Vracanja` date DEFAULT NULL,
   `Korisnik_ID` int(11) NOT NULL,
   `Knjiga_ID` int(11) NOT NULL,
-  `Status_Iznajmljivanja` tinyint(1) DEFAULT '1'
+  `Status_Iznajmljivanja` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
 --
@@ -88,14 +85,13 @@ CREATE TABLE `iznajmljivanje` (
 
 INSERT INTO `iznajmljivanje` (`Id_Iznajmljivanje`, `Datum_Iznajmljivanja`, `Datum_Vracanja`, `Korisnik_ID`, `Knjiga_ID`, `Status_Iznajmljivanja`) VALUES
 (1, '2019-07-01', '2019-07-28', 2, 1, 0),
-(2, '2019-07-28', '2019-07-28', 2, 1, 0),
-(3, '2019-07-28', NULL, 3, 2, 1),
-(4, '2019-07-28', '2019-07-31', 1, 2, 0),
-(5, '2019-07-28', '2019-07-30', 2, 6, 0),
-(6, '2019-07-29', '2019-07-29', 6, 1, 0),
-(7, '2019-07-29', NULL, 6, 2, 1),
-(8, '2019-07-31', NULL, 3, 2, 1),
-(9, '2019-08-05', '2019-08-05', 2, 2, 0);
+(6, '2019-07-29', '2019-07-29', 4, 2, 0),
+(14, '2019-08-06', NULL, 3, 3, 1),
+(27, '2019-08-11', '2019-08-14', 2, 4, 0),
+(34, '2019-08-12', NULL, 2, 2, 1),
+(35, '2019-08-14', NULL, 3, 1, 1),
+(36, '2019-08-14', '2019-08-14', 3, 2, 0),
+(37, '2019-08-16', NULL, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -107,7 +103,7 @@ CREATE TABLE `knjige` (
   `ID_Knjige` int(11) NOT NULL,
   `Naziv` varchar(100) COLLATE utf8_croatian_ci NOT NULL,
   `Godina_Izdavanja` varchar(10) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Status` tinyint(1) DEFAULT '1',
+  `Status` tinyint(1) DEFAULT 1,
   `Autor_ID` int(11) NOT NULL,
   `Izdavac_ID` int(11) NOT NULL,
   `Br_Stranica` int(11) NOT NULL
@@ -118,11 +114,10 @@ CREATE TABLE `knjige` (
 --
 
 INSERT INTO `knjige` (`ID_Knjige`, `Naziv`, `Godina_Izdavanja`, `Status`, `Autor_ID`, `Izdavac_ID`, `Br_Stranica`) VALUES
-(1, 'Na drini ćuprija', '1945', 1, 0, 0, 318),
-(2, 'Winnetou', '1892', 1, 2, 2, 542),
-(6, 'Mali princc', '1943', 1, 3, 2, 128),
-(8, 'Ilijada i Odiseja', '1999', 1, 5, 6, 468),
-(9, 'na drini ćuprija', '1945', 1, 1, 1, 418);
+(1, 'Na drini ćuprija', '1945', 1, 1, 1, 318),
+(2, 'Winnetou', '1892', 1, 2, 4, 542),
+(3, 'Slavno vojevanje', '1967.', 1, 4, 3, 516),
+(4, 'Ilijada i Odiseja', '1999', 1, 3, 1, 468);
 
 -- --------------------------------------------------------
 
@@ -138,7 +133,7 @@ CREATE TABLE `korisnici` (
   `Lozinka` varchar(50) COLLATE utf8_croatian_ci NOT NULL,
   `Adresa` varchar(50) COLLATE utf8_croatian_ci DEFAULT NULL,
   `Br_Telefona` varchar(50) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Status` tinyint(1) DEFAULT '1',
+  `Status` tinyint(1) DEFAULT 1,
   `Tip_KorisnikaID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
@@ -148,9 +143,9 @@ CREATE TABLE `korisnici` (
 
 INSERT INTO `korisnici` (`ID_Korisnik`, `Ime`, `Prezime`, `E_Mail`, `Lozinka`, `Adresa`, `Br_Telefona`, `Status`, `Tip_KorisnikaID`) VALUES
 (1, 'Jurica', 'Tomic', 'jurica.tomic1@gmail.com', 'jurica', 'Cim 10A', '063448320', 1, 1),
-(2, 'Marko', 'Tomic', 'marko.tomic1@gmail.com', 'marko', 'Cim 10A', '063411425', 1, 2),
-(6, 'Ana ', 'Zadro', 'ana.zadro1@gmail.com', 'ana', 'S.Radica 55', '063117222', 1, 2),
-(7, 'Dario', 'Zovko', 'dario.zovko1@gmail.com', 'dario', 'Cim 30b', '063777888', 1, 2);
+(2, 'Marko', 'Tomić', 'marko.tomic1@gmail.com', 'marko', 'Cim 10A', '063411425', 1, 2),
+(3, 'Ana ', 'Zadro', 'ana.zadro1@gmail.com', 'ana', 'S.Radica 55', '063117222', 1, 2),
+(4, 'Dario', 'Zovko', 'dario.zovko1@gmail.com', 'dario', 'Cim 30b', '063777888', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -220,31 +215,31 @@ ALTER TABLE `tip_korisnika`
 -- AUTO_INCREMENT for table `autori`
 --
 ALTER TABLE `autori`
-  MODIFY `ID_Autor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_Autor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `izdavaci`
 --
 ALTER TABLE `izdavaci`
-  MODIFY `ID_Izdavac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_Izdavac` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `iznajmljivanje`
 --
 ALTER TABLE `iznajmljivanje`
-  MODIFY `Id_Iznajmljivanje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Id_Iznajmljivanje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `knjige`
 --
 ALTER TABLE `knjige`
-  MODIFY `ID_Knjige` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `ID_Knjige` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `korisnici`
 --
 ALTER TABLE `korisnici`
-  MODIFY `ID_Korisnik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID_Korisnik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tip_korisnika`
